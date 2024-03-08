@@ -35,16 +35,15 @@
                 <h2>Коментарі ({{ info[5]|length }})</h2>
                 <p>Зареєстровано як {{ user['email'] }}</p>
                 <form action="{{ url_for('add_comment') }}" method="POST" class="comment-form">
-                    <input type='text' name="comment-input" placeholder="Залиште коментар" required>
-                    <button type='submit' class='comment-button' id = 'submit-button'>Опублікувати</button>
-                    <script>
-                        document.getElementById('submit-button').addEventListener('click', function() {
-                            this.innerHTML = 'Обробляємо...';
-                        });
-                    </script>
+                    <div id="comment-form-1">
+                        <input type='text' name="comment-input" placeholder="Залиште коментар" required>
+                        <button type='submit' class='comment-button' id = 'submit-button'>Опублікувати</button>
+                    </div>
                     <br />
-                    <input type="checkbox" id="anonymous" name="anonymous" class = 'anonymous'>
-                    <label for="anonymous" class = 'anonymous-checkbox'>Опублікувати анонімно</label>
+                    <div>
+                        <input type="checkbox" id="anonymous" name="anonymous" class = 'anonymous'>
+                        <label for="anonymous" class = 'anonymous-checkbox'>Опублікувати анонімно</label>
+                    </div>
                 </form>
                 {% for comment in info[5] %}
                     <div class = 'comment'>
@@ -58,6 +57,11 @@
             <div>‎ </div>
         </div>
     </div>
+    <script>
+        document.getElementById('submit-button').addEventListener('click', function() {
+            this.innerHTML = 'Обробляємо...';
+        });
+    </script>
 </body>
 
 
