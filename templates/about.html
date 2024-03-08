@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class = 'header'>
+        <a href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class='logo'>
+        </a>
+        <div class ='buttons'>
+            <form action="{{ url_for('login') }}" method="POST" class="login">
+                <button class="login_button" name='login'>Вхід</button>
+            </form>
+            <form action="{{ url_for('login') }}" method="POST" class="register">
+                <button class="register_button" name='register'>Рєстрація</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class = 'background', style = "background-image: url({{url_for('static', filename='ucu.jpg') }});">
+        <div class="main">
+            <h1 class = 'about'>Що це?</h1>
+            <div class = info>
+                
+                <p class = 'purpose'>
+                    UCUtalks - проєкт створений студентами 1 курсу ФПН. Мета проекту - допомогти іншим студентам з вибиром
+                    курсів світоглядного ядра. На сайті можна знайти відгуки про курси, а також залишити свій власний відгук.
+                    <br><br>
+                    Якщо ви вже пройшли якийсь курс, будь ласка, залиште свій відгук, щоб допомогти іншим студентам з вибором.
+                </p>
+                <img src="{{ url_for('static', filename='dizhak2.jpg') }}" alt="Dizhak" class='dizhak' onclick="window.open('https://www.instagram.com/nazar_dizhak87/');">
+            </div>
+        </div>
+    </div>
+
+    <div class = 'footer'>
+        <a href="{{ url_for('about') }}">
+            <p>UCUtalks</p>
+        </a>
+        <p>© 2024, All rights reserved</p>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,956 @@
+comments,is_swear_word
+чудовий курс,False
+хуйня,True
+викладач блядь,True
+обожнюю цей курс,False,
+не рекомендую йти на цю хуйню,True
+ахуєнний курс!!!,True
+хороший викладач і лекції цікаві,False
+єбав в рот,True
+піська,True
+та я хз тіпа норм,False
+а там є крівєткі?,False
+піздазалупна хуємразь,True
+андрій мовчун,False
+бялть,True
+викладачка шмара,True
+заєбісь курс,True,
+ровний курс,False,
+как же ахуенно постоянно кидать тот же мем в паблик для людей с альцгеймером ,True
+б л я т ь,True
+с у ка,True
+Нормально,False
+Імба,False
+Супер,False
+Круто,False
+Люблю цей курс,False
+Чудовий,True
+Хуйня повна,True
+дура,True
+пізда,True
+блять,True
+коментар,False
+Це нормальний коментар,False
+Це хуйовий,True
+Це піздєц,True
+Це хуй,True
+Я тут,False
+Не баньте,False
+Хороший курс,False
+Імба,False
+Рекомендую,False
+Почав,False
+Залупний курс,True
+Їбаний,True
+Нормальний курс,False
+Крутий курс,False
+Хуйовий курс,True
+Викладач бусінка,False
+нахуй,True
+Привіт,False
+Нахуй,True
+Хуй,True
+Їбав,True
+Їбаний,True
+Сука,True
+с у к а,True
+с У к А,True
+п р и в і т,False
+п а п а,False
+су ка,True
+норм,False
+люблю,False
+говорити,False
+їбанутий коментар,True
+я йобнутий,True
+я крутий,False
+Це ахуєнно,True
+Це круто,False
+Ти циган,True
+Ти негр,True
+ти молодець,False
+ТИ МОЛОДЕЦЬ,False
+СУКА,True
+БЛЯТЬ,True
+НАХУЙ,True
+НОРМАЛЬНО,False
+ХОРОШИЙ КУРС,False
+ХО ХО ХО,False
+с у к а,True
+б л я т ь,True
+н а х у й,True
+негр,True
+н е г р,True
+пізда,True
+п і з д а,True
+ПІЗДА,True
+С У К А,True
+Все добре,False
+В С Е Д О Б Р Е,False
+добре,False
+супер,False
+ахуй,True
+ахуєть,True
+ахуїть,True
+бля,True
+блять,True
+блядь,True
+блядина,True
+блядіна,True
+блядки,True
+блядовать,True
+блядувати,True
+блядувать,True
+блядовозка,True
+блядський,True
+блядскій,True
+блядун,True
+бляха,True
+вз'єбать,True
+в'єбать,True
+в'єбати,True
+вйобаний,True
+виблядок,True
+виєбони,True
+виїбони,True
+вийобисто,True
+вийобуватись,True
+гавно,True
+гівно,True
+гімно,True
+гамно,True
+гандон,True
+гондон,True
+гавнюк,True
+гімнюк,True
+далбайоб,True
+довбойоб,True
+допиздітись,True
+дохуя,True
+дахуя,True
+дрочилка,True
+давалка,True
+дрочить,True
+дрочити,True
+дрочун,True
+еблан,True
+ебанат,True
+єблан,True
+єбанат,True
+єбло,True
+ебло,True
+ебать,True
+єбать,True
+єбальник,True
+єбанутий,True
+єбучий,True
+їбать,True
+їбанутий,True
+їбальник,True
+їбучий,True
+їбло,True
+жопа,True
+срака,True
+дупа,True
+заєбать,True
+заїбати,True
+зайоб,True
+залупа,True
+курва,True
+шмара,True
+куртизанка,True
+повія,True
+кончать,True
+кончати,True
+лярва,True
+мудак,True
+мозгойоб,True
+мудило,True
+мудло,True
+муділа,True
+найобка,True
+нахуй,True
+нев'єбенно,True
+нехуйово,True
+нехуй,True
+охуїть,True
+охуєнно,True
+ахуєнно,True
+пиздануть,True
+пизданути,True
+пизданутий,True
+піздарікі,True
+пиздарики,True
+пизда,True
+пізда,True
+піздєц,True
+пиздюк,True
+піздюк,True
+поєбать,True
+поїбати,True
+поєбень,True
+поєбота,True
+поєбунок,True
+похуй,True
+похую,True
+хуй,True
+хуйня,True
+роз'їбати,True
+роз'їбать,True
+розйобаний,True
+захуячити,True
+сука,True
+злоєбучий,True
+уйобок,True
+уєбан,True
+уїбан,True
+ухуярити,True
+ухуярить,True
+хитровиєбаний,True
+хуєпльот,True
+хуєпліт,True
+хуєта,True
+хуєтєнь,True
+хуїта,True
+хуїтєнь,True
+хуйово,True
+хуйло,True
+целка,True
+чмо,True
+чмошнік,True
+чмоня,True
+чмирь,True
+шаройобитись,True
+шлюха,True
+шалава,True
+шаболда,True
+швабра,True
+долбоящер,True
+хач,True
+чурка,True
+жид,True
+негр,True
+нігер,True
+ніга,True
+нігга,True
+ніггер,True
+циган,True
+порно,True
+абсолютно,False
+аромат,False
+банка,False
+бій,False
+вихід,False
+винахід,False
+гніздо,False
+гніт,False
+газда,False
+диван,False
+дівчина,False
+двері,False
+екран,False
+епітет,False
+епсілон,False
+єнот,False
+євангеліє,False
+жінка,False
+жито,False
+знак,False
+зважити,False
+інший,False
+іномарка,False
+їжак,False
+їсти,False
+їдуіт,False
+йой,False
+клим,False
+кава,False
+кімната,False
+лимон,False
+лижі,False
+линва,False
+лик,False
+манго,False
+машина,False
+мама,False
+носоріг,False
+нісан,False
+ніде,False
+окхард,False
+привіт,False
+абсолютно,False
+аромат,False
+банка,False
+бій,False
+вихід,False
+винахід,False
+гніздо,False
+гніт,False
+газда,False
+диван,False
+дівчина,False
+двері,False
+екран,False
+епітет,False
+епсілон,False
+єнот,False
+євангеліє,False
+жінка,False
+жито,False
+знак,False
+зважити,False
+інший,False
+іномарка,False
+їжак,False
+їсти,False
+їдуіт,False
+йой,False
+клим,False
+кава,False
+кімната,False
+лимон,False
+лижі,False
+линва,False
+лик,False
+манго,False
+машина,False
+мама,False
+носоріг,False
+нісан,False
+ніде,False
+окхард,False
+привіт,False
+приклад,False
+поняв,False
+помідор,False
+річка,False
+рик,False
+ринва,False
+риба,False
+стосунки,False
+стос,False
+стовп,False
+туземець,False
+тримай,False
+трава,False
+уку,False
+удар,False
+фартух,False
+фон,False
+хлопець,False
+хлист,False
+хвіст,False
+цистерна,False
+ціна,False
+цвіріньк,False
+чобіт,False
+чоловік,False
+чвари,False
+школа,False
+шишка,False
+шконка,False
+щука,False
+щик,False
+юля,False
+ювентус,False
+ялинка,False
+як,False
+якір,False
+бялть,True
+БЯЛТЬ,True
+СУ КА,True
+БЛЯ ТЬ,True
+бля ть,True
+бля ну нє,True
+блять,True
+нахуй,True
+НА ХУЙ,True
+н а х у й,True
+найух,True
+пізда,True
+піззда,True
+піздда,True
+бляять,True
+бллять,True
+суука,True
+сукка,True
+суукаа,True
+сукаа,True
+нахуййй,True
+нахуя,True
+нах,True
+піздєц,True
+пі здєц,True
+пііздєц,True
+піздєєєц,True
+їбав,True
+ібав,True
+їбанутий,True
+йобнутий,True
+йо бну тий,True
+йообнутий,True
+йбонутий,True
+їбанутий,True
+їбати,True
+єбати,True
+єбанат,True
+єба ти,True
+дура,True
+д у р а,True
+мразь,True
+м р а з ь,True
+мрьазь,True
+блятб,True
+блятьб,True
+аблять,True
+а сука,True
+блін,True
+йобаний,True
+йоб аний,True
+йоб,True
+п і з д а,True
+П І З Д А,True
+Й О Б Н У Т И Й,True
+йобнутий,True
+Привіт,False
+АБСОЛЮТНО,False
+а б с о л ю т н о,False
+п р и в і т,False
+привііііт,False
+прив іт,False
+првиіт,False
+пр ивіт,False
+ма нго,False
+м а н г о,False
+б л я т ь,True
+с у к а,True
+н а х у й,True
+нхуй,True
+блть,True
+блят,True
+п і з д є ц,True
+х у й,True
+х у й н я,True
+з а л у п а,True
+х у й,True
+х у й,True
+х у й,True
+пчздєц,True
+піздєц,True
+юлять,True
+бялть,True
+с у к а,True
+х у й,True
+н а х у й,True
+й о б а н и й,True
+й о б н у т и й,True
+ї б а в,True
+х у й,True
+н а х у й,True
+п і з д а,True
+п і з д є ц,True
+п і з д о с,True
+н е г р,True
+півень,False
+підвіконник,False
+пізно,False
+пін,False
+піво,False
+пиво,False
+нахитати,False
+нахіба,False
+накрити,False
+нахаба,False
+наволочка,False
+я,False
+як,False
+якщо,False
+якби,False
+якбибудь,False
+на,False
+навіть,False
+навіщо,False
+навіщо,False
+не,False
+небо,False
+портрет,False
+замок,False
+квіток,False
+квіти,False
+кісток,False
+нормальний,False
+дим,False
+слова,False
+хрусталь,False
+очі,False
+кинджал,False
+океан,False
+принцеса,False
+котру,False
+згубила,False
+краса,False
+лиш та,False
+бокал,False
+тінь,False
+вікно,False
+стіна,False
+горить,False
+вогонь,False
+мною,False
+папа,False
+хочу,False
+хочу,False
+мама,False
+тато,False
+машина,False
+автомобіль,False
+велосипед,False
+колесо,False
+двері,False
+вікно,False
+стіна,False
+підлога,False
+стеля,False
+потолок,False
+стіл,False
+стілець,False
+крісло,False
+диван,False
+комод,False
+шафа,False
+ліжко,False
+літак,False
+вертоліт,False
+корабель,False
+пароплав,False
+поїзд,False
+трамвай,False
+тролейбус,False
+автобус,False
+таксі,False
+тролейбус,False
+гітара,False
+скрипка,False
+баян,False
+акордеон,False
+труба,False
+тромбон,False
+флейта,False
+кларнет,False
+гобойм,False
+саксофон,False
+барабан,False
+тарілка,False
+бубон,False
+хотіти,False
+хотіти,False
+хотіти,False
+бігати,False
+плавати,False
+літати,False
+повзати,False
+говорити,False
+співати,False
+танцювати,False
+малювати,False
+писати,False
+читати,False
+розуміти,False
+знати,False
+вміти,False
+робити,False
+думати,False
+вірити,False
+надіятися,False
+любити,False
+цінувати,False
+поважати,False
+великий,False
+маленький,False
+важкий,False
+легкий,False
+товстий,False
+худий,False
+високий,False
+низький,False
+красивий,False
+гарний,False
+поганий,False
+страшний,False
+хочу,False
+хочу,False
+зауважити,False
+запалити,False
+запитати,False
+запитати,False
+замалювати,False
+завжди,False
+завжди,False
+задом,False
+передом,False
+півень,False
+пивниця,False
+підвіконник,False
+пізно,False
+пін,False
+піво,False
+пиво,False
+нахитати,False
+нахіба,False
+накрити,False
+нахаба,False
+наволочка,False
+я,False
+як,False
+якщо,False
+якби,False
+якбибудь,False
+на,False
+навіть,False
+навіщо,False
+навіщо,False
+не,False
+небо,False
+портрет,False
+замок,False
+півень,False
+школа,False
+шо,False
+що,False
+щик,False
+на,False
+ну,False
+не,False
+дуже,False
+при,False
+попри,False
+навіть,False
+півень,False
+приклад,False
+база,False
+база,False
+грунт,False
+фундамент,False
+основа,False
+підстава,False
+підґрунтя,False
+підґрунтя,False
+підвал,False
+північ,False
+бачить,False
+місяць,False
+лай,False
+лай,False
+лай,False
+лай,False
+нє,False
+ні,False
+нога,False
+нежить,False
+хай,False
+хай,False
+хай,False
+хай,False
+худий,False
+хуже,False
+худі,False
+хвала,False
+хвиля,False
+сон,False
+lorem,False
+ipsum,False
+dolor,False
+amen,False
+lorem,False
+ipsum,False
+dolor,False
+amen,False
+твій,False
+мій,False
+наш,False
+їх,False
+їхній,False
+цей,False
+той,False
+інший,False
+кожен,False
+кожний,False
+кожна,False
+кожне,False
+кожній,False
+кожним,False
+кожному,False
+кожними,False
+кожні,False
+натовп,False
+напік,False
+напрямок,False
+мавпа,False
+хочу,False
+хочу,False
+хочу,False
+хотіти,False
+чому,False
+чого,False
+розумію,False
+як,False
+коли,False
+де,False
+відколи,False
+доки,False
+скільки,False
+наскільки,False
+як,False
+як,False
+як,False
+якомога,False
+що,False
+що,False
+що,False
+шо,False
+шо,False
+шо,False
+уяви,False
+собі,False
+ти,False
+ми,False
+літаєш,False
+як,False
+літак,False
+добре,False
+поняв,False
+зрозумів,False
+.,False
+?,False
+!,False
+"",False
+',False
+:,False
+;,False
+{,False
+},False
+[,False
+],False
+(,False
+),False
+@,False
+#,False
+$,False
+%,False
+^,False
+&,False
+*,False
+можеш,False
+могти,False
+можеш,False
+могти,False
+можеш,False
+могти,False
+можеш,False
+могти,False
+можна,False
+не можна,False
+треба,False
+це,False
+цей,False
+цього,False
+цього,False
+супер,False
+це,False
+цей,False
+цього,False
+цього,False
+супер,False
+це,False
+цей,False
+цього,False
+цього,False
+супер,False
+це,False
+цей,False
+цього,False
+цього,False
+супер,False
+це,False
+цей,False
+цього,False
+цього,False
+супер,False
+це,False
+цей,False
+цього,False
+цього,False
+супер,False
+чудовий,False
+чудовий,False
+чудовий,False
+чудовий,False
+чудовий,False
+чудовий,False
+малиновий,False
+малиновий,False
+білий,False
+чорний,False
+б л я т ь,True
+с у к а,True
+н а х у й,True
+нхуй,True
+блть,True
+блят,True
+п і з д є ц,True
+х у й,True
+х у й н я,True
+з а л у п а,True
+олекса,False
+а,False
+б,False
+в,False
+г,False
+ґ,False
+д,False
+е,False
+є,False
+ж,False
+з,False
+и,False
+і,False
+ї,False
+й,False
+к,False
+л,False
+м,False
+н,False
+о,False
+п,False
+р,False
+с,False
+т,False
+у,False
+ф,False
+х,False
+ц,False
+ч,False
+ш,False
+щ,False
+ь,False
+ю,False
+я,False
+а,False
+назар,False
+друщак,False
+діжак,False
+богдан,False
+борківський,False
+попов,False
+мілян,False
+хіта,False
+олекса,False
+ліля,False
+роман,False
+іконніков,False
+данило,False
+даниїл,False
+данік,False
+сай,False
+божена,False
+мовчун,False
+андрій,False
+кравчук,False
+євген,False
+євгеній,False
+олександр,False
+саша,False
+блятб,True
+блятьб,True
+аблять,True
+сукааа,True
+с у к а,True
+б л я т ь,True
+н а х у й,True
+нхуй,True
+блть,True
+х у й,True
+х у й н я,True
+з а л у п а,True
+пчздєц,True
+піздєц,True
+юлять,True
+бялть,True
+с у к а,True
+пчзда,True
+пі3да,True
+6лять,True
+блінблять,True
+підара,True
+6лять,True
+6лять,True
+с у к а,True
+С У К а,True
+Б Л Я Т Ь,True
+Х У Й,True
+ху й,True
+бля ть,True
+на хуй,True
+нхуй,True
+пзда,True
+пі3да,True
+пізла,True
+поїбота,True
+поєбень,True
+хуєбота,True
+робота,False
+гамота,False
+проба,False
+пизда,True
+пиздоблядь,True
+піздобляд,True
+нахуйблять,True
+нахуйблядь,True
+нхуй,True
+піздун,True
+піздюк,True
+піздос,True
+х у й,True
+н а х у й,True
+б л я т ь,True
+п і з д а,True
+п і з д є ц,True
+б л я,True
+с у к а,True
+а х у є н н о,True
+а х у є т ь,True
+а х у й,True
+а х у є н н о,True
+данік,False
+хіта,False
+пиздарікі,True
+пиздарики,True
+нігкр,True
+нігр,True
+нігер,True
+сюка,True
+бляяять,True
+сууука,True
+блятб,True
+юлять,True
+пи3да,True
+пизда,True
+нахуйблядь,True
+блятьнахуй,True
+блятьнахуйсука,True
+назуй,True
+пчздєц,True
+пчзда,True
+пізд4,True
+олекс4,False
+нах*й,True
+бл*ть,True
+с*ка,True
+ска,True
+блть,True
+нахуууй,True
+хуйтро,True
+хуєкса,True
+хуйило,True
+хуйар,True
+хуйло,True

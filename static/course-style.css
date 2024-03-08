@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*, *:before, *:after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*Header*/
+/*#############################################################################################################*/
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 0;
+    border-bottom: 0px solid #e0e0e0;
+    background-color: #767676;
+}
+
+
+.logo {
+    width: 27%;
+    height: 90%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 38%;
+    cursor: pointer;
+}
+
+.buttons {
+    display: flex;
+    margin-right: 0 auto;
+    align-items: center;
+    margin-right: 16.5%;
+    gap: 3%;
+
+}
+
+.register {
+    margin-bottom: 2.5%;
+}
+
+.register_button {
+    background-color: #373737;
+    border-radius: 3px;
+    border-width: 0;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 10px 12px;
+    text-align: center;
+    touch-action: manipulation; 
+}
+
+.login {
+    margin-bottom: 2.5%;
+}
+.login_button {
+    background-color: #373737;
+    border-radius: 3px;
+    border-width: 0;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 10px 12px;
+    text-align: center;
+    touch-action: manipulation;
+    margin-right: 3%;
+}
+
+.login_button:hover, .register_button:hover {
+    background-color:#272727;
+    color: white;
+}
+
+/*#############################################################################################################*/
+
+
+.main {
+    width: 75%;
+    min-height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(221, 221, 221, 1);
+}
+
+.main h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 40px;
+    padding-top: 2%;
+    margin-left: 5%;
+}
+
+.background {
+    background-size: cover;
+}
+
+.image {
+    width: 30%;
+    height: 30%;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+}
+
+.footer {
+    display: flex;
+    justify-content: right;
+    align-items: right;
+    padding: 20px;
+    background-color: #767676;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+.footer p {
+    color: white;
+    margin-right: 5%;
+}
+
+.footer a {
+    color: white;
+    margin-right: 2%;
+}
+
+.info {
+    margin-left: 5%;
+    width: 100%;
+}
+
+.info h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 32px;
+}
+
+.info p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    width: 90%;
+    margin-top: 0.5%;
+    padding-bottom: 1.5%;
+}
+
+.comments-box {
+    box-sizing: border-box;
+    margin-left: 4%;
+    width: 90%;
+    font-family: 'Poppins', sans-serif;
+    background-color: white;
+    padding: 15px;
+}
+.comments-box h2 {
+    font-size: 32px;
+}
+
+.comments-box p {
+    font-size: 14px;
+    margin-left: 1%;
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+.comment-form {
+    margin-left: 1%;
+    margin-bottom: 1%;
+    display: flex;
+}
+
+.comment-form input {
+    background-color: rgba(221, 221, 221, 1);
+    border-radius: 3px;
+    border-width: 0;
+    color: #373737;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 8px 10px;
+    text-align: center;
+    touch-action: manipulation; 
+}
+
+.comment-form button {
+    background-color: #373737;
+    border-radius: 3px;
+    border-width: 0;
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 8px 10px;
+    text-align: center;
+    touch-action: manipulation; 
+}
+.comment-form button:hover {
+    background-color:#272727;
+}
+.comment {
+    display: flex;
+    align-items: center;
+    margin-left: 1%;
+}
+.comment h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+}
+
+.comment p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    margin-left: 0.5%;
+}
+
+.anonymous {
+    font-family: 'Poppins', sans-serif;
+    margin-left: 1.7%;
+    margin-bottom: 1%;
+    padding-top: 2%;
+}
+
+.anonymous-checkbox {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+}
+
+.comment-single {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    width: 80%;
+    padding-left: 1%;
+}

@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*, *:before, *:after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*Header*/
+/*#############################################################################################################*/
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 0;
+    border-bottom: 0px solid #e0e0e0;
+    background-color: #767676;
+}
+
+
+.logo {
+    width: 27%;
+    height: 90%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 38%;
+    cursor: pointer;
+}
+
+.buttons {
+    display: flex;
+    margin-right: 0 auto;
+    align-items: center;
+    margin-right: 16.5%;
+    gap: 3%;
+
+}
+
+.register {
+    margin-bottom: 2.5%;
+}
+
+.register_button {
+    background-color: #373737;
+    border-radius: 3px;
+    border-width: 0;
+    color: #373737;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 10px 12px;
+    text-align: center;
+    touch-action: manipulation;
+}
+
+.login {
+    margin-bottom: 2.5%;
+}
+.login_button {
+    background-color: #373737;
+    border-radius: 3px;
+    border-width: 0;
+    color: #373737;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 10px 12px;
+    text-align: center;
+    touch-action: manipulation;
+    margin-right: 3%;
+}
+
+.login_button:hover, .register_button:hover {
+    background-color:#272727;
+    color: white;
+}
+
+/*#############################################################################################################*/
+
+
+.main {
+    width: 75%;
+    min-height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(221, 221, 221, 1);
+}
+
+.background {
+    background-size: cover;
+}
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    padding-top: 1.5%;
+}
+
+.search-input {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #1d1d1d;
+    border-radius: 4px;
+    background-color: #ffffff;
+}
+
+.search-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-button {
+    background-color: #373737;
+    border-radius: 3px;
+    border-width: 0;
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 8px 10px;
+    text-align: center;
+    touch-action: manipulation; 
+    font-family: 'Poppins', sans-serif;
+    margin-right: 8%;
+}
+
+.search-button:hover {
+    background-color:#272727;
+}
+
+.warning {
+    margin-top: 1%;
+}
+
+.h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    margin-left: 5%;
+    margin-bottom: 1%;
+}
+
+.courses {
+    margin-left: 5%;
+}
+
+.course {
+    font-weight: 600;
+    width: 95%;
+    margin-bottom: 20px;
+    text-align: left;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-right: 5%;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+
+.course:hover {
+    background-color: #dddcdc;
+    border: 1px solid #1d1d1d;
+    border-radius: 4px;
+}
+
+.footer {
+    display: flex;
+    justify-content: right;
+    align-items: right;
+    padding: 20px;
+    background-color: #767676;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+.footer p {
+    color: white;
+    margin-right: 5%;
+}
+
+.footer a {
+    color: white;
+    margin-right: 2%;
+}
+
+.about {
+    padding-top: 2%;
+    margin-left: 5%;
+    font-size: 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+.main p {
+    margin-left: 5%;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    width: 50%;
+    margin-top: 4%;
+}
+
+
+.dizhak {
+    position: relative;
+    margin-left: 5%;
+    width: 30%;
+    height: 20%;
+    transition: all 1s ease;
+    cursor: pointer;
+}
+
+@keyframes hue-rotate-animation {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+@keyframes rotate-animation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.dizhak:hover {
+    width: 35%;
+    height: 25%;
+    border-radius: 100%;
+    /* animation: hue-rotate-animation 5s infinite linear; */
+    animation: rotate-animation 5s infinite linear, hue-rotate-animation 5s infinite linear;
+    filter:saturate(8);
+}
+
+.info {
+    display: flex;
+    align-items: start;
+}
+
