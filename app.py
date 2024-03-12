@@ -5,7 +5,9 @@ from flask_dance.consumer import oauth_authorized
 from flask_login import LoginManager, UserMixin
 from pymongo.mongo_client import MongoClient
 import os
-from neural import classifier
+from neural import SwearWordClassifier
+
+classifier = SwearWordClassifier()
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
@@ -52,7 +54,6 @@ class User(UserMixin):
     @classmethod
     def get(cls, id):
         return cls.users.get(id)
-
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -103,21 +104,38 @@ def get_results():
 def about():
     return render_template('about.html')
 
+
 @app.route('/course', methods=['GET', 'POST'])
 def course():
     if request.method == 'POST':
         course = request.form.get('course')
-    else:
-        course = request.args.get('course')
+        return redirect(url_for('course_name', course=course))
+
+    course = request.args.get('course')
     if not course:
         return redirect(url_for('index'))
-    session['course'] = course
+
     info = courses_db.find_one({'name': course})
+    if not info:
+        return redirect(url_for('index'))
+
     course_info = (info['name'].split('. ')[1], info['teacher'], info['teacher_description'],\
                     info['course'], info['image'], info['comments'])
-    
-    session['course_info'] = course_info
+
     return render_template('course.html', info=course_info, user = session.get('user'))
+
+@app.route('/course/<course>', methods=['GET'])
+def course_name(course):
+    info = courses_db.find_one({'name': course})
+    session['course'] = course
+    if not info:
+        return redirect(url_for('index'))
+
+    course_info = (info['name'].split('. ')[1], info['teacher'], info['teacher_description'],\
+                    info['course'], info['image'], info['comments'])
+
+    return render_template('course.html', info=course_info, user = session.get('user'))
+
 
 @app.route('/add_comment', methods=['POST'])
 def add_comment():
@@ -126,7 +144,7 @@ def add_comment():
 
     if not comment:
         flash('Comment cannot be empty')
-        return redirect(url_for('course', course=course))
+        return redirect(url_for('course_name', course=course))
 
     for i in comment.split():
         print(i, classifier.detect(i))
@@ -141,6 +159,11 @@ def add_comment():
     else:
         courses_db.update_one({'name': course},\
         {'$push': {'comments': [('anonimous@ucu.edu.ua', 'Анонімний користувач', comment)]}})
+
+    return redirect(url_for('course_name', course=course))
+
+if __name__ == "__main__":
+    app.run(port=5001)
 
     return redirect(url_for('course', course=course))
 
