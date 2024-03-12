@@ -1,22 +1,15 @@
-print('Importing libs')
-from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask import Flask, render_template, request, redirect, url_for, session, flash, abort
 from flask_dance.contrib.google import make_google_blueprint, google
 from flask_dance.consumer import oauth_authorized
-from flask_login import LoginManager, UserMixin
 from pymongo.mongo_client import MongoClient
+import base64
 import os
-from neural import SwearWordClassifier
-
-classifier = SwearWordClassifier()
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
-print('Creating app')
 app = Flask(__name__)
 app.secret_key = '123'
-login_manager = LoginManager(app)
 
-print('Connecting to db')
 client = MongoClient("mongodb+srv://oleksa:oleksa2@uctk.oc9ucj1.mongodb.net/?retryWrites=true&w=majority&appName=Uctk")
 
 mydb = client["mydb"]
@@ -25,20 +18,12 @@ users_db = mydb["users"]
 courses = [course['name'] for course in courses_db.find()]
 users = [user['email'] for user in users_db.find()]
 
-print('Done')
-@login_manager.user_loader
-def load_user(user_id):
-    return User.get(user_id)
+with open('swears.txt', 'rb') as file:
+    encoded_data = file.read()
+    swears = base64.b64decode(encoded_data)
+    swears = swears.decode('utf-8').split()
 
-blueprint = make_google_blueprint(
-    client_id="582748017051-d1o8ek940oot1f6akhd3ab06cehnpj3s.apps.googleusercontent.com",
-    client_secret="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",
-    scope=["openid", "https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile"]
-)
-
-app.register_blueprint(blueprint, url_prefix="/login")
-
-class User(UserMixin):
+class User():
     users = {user['email'] for user in users_db.find()}
     is_authenticated = False
 
@@ -54,6 +39,14 @@ class User(UserMixin):
     @classmethod
     def get(cls, id):
         return cls.users.get(id)
+    
+
+blueprint = make_google_blueprint(
+    client_id="582748017051-d1o8ek940oot1f6akhd3ab06cehnpj3s.apps.googleusercontent.com",
+    client_secret="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",
+    scope=["openid", "https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile"])
+
+app.register_blueprint(blueprint, url_prefix="/login")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -85,11 +78,9 @@ def index():
 @app.route("/", methods=["GET", "POST"])
 def search():
     if request.method == 'POST':
-        search = request.form.get('search', '').lower()
+        search = request.form.get('search').lower()
         result = [i for i in courses if search in i.lower()]
-        no_results = not bool(result)
         session['result'] = result
-        session['no_results'] = no_results
         return redirect(url_for('get_results'))
     else:
         return render_template("index.html", courses=result)
@@ -97,8 +88,7 @@ def search():
 @app.route("/results", methods=["GET"])
 def get_results():
     result = session.get('result', courses)
-    no_results = session.get('no_results', False)
-    return render_template("index.html", courses=result, no_results=no_results)
+    return render_template("index.html", courses=result)
 
 @app.route('/about')
 def about():
@@ -107,50 +97,32 @@ def about():
 
 @app.route('/course', methods=['GET', 'POST'])
 def course():
-    if request.method == 'POST':
-        course = request.form.get('course')
-        return redirect(url_for('course_name', course=course))
-
-    course = request.args.get('course')
-    if not course:
-        return redirect(url_for('index'))
-
-    info = courses_db.find_one({'name': course})
-    if not info:
-        return redirect(url_for('index'))
-
-    course_info = (info['name'].split('. ')[1], info['teacher'], info['teacher_description'],\
-                    info['course'], info['image'], info['comments'])
-
-    return render_template('course.html', info=course_info, user = session.get('user'))
+    course_name = request.form.get('course')
+    if not course_name:
+        abort(400, description="No course name provided")
+    return redirect(url_for('course_name', course=request.form.get('course')))
 
 @app.route('/course/<course>', methods=['GET'])
 def course_name(course):
     info = courses_db.find_one({'name': course})
+
+    if info is None:
+        abort(404, description="This course doesn't exist")
+    
     session['course'] = course
-    if not info:
-        return redirect(url_for('index'))
 
     course_info = (info['name'].split('. ')[1], info['teacher'], info['teacher_description'],\
-                    info['course'], info['image'], info['comments'])
+                    info['course'], info['image'], info['comments'][::-1])
 
     return render_template('course.html', info=course_info, user = session.get('user'))
-
 
 @app.route('/add_comment', methods=['POST'])
 def add_comment():
     course = session.get('course')
     comment = request.form.get('comment-input')
 
-    if not comment:
-        flash('Comment cannot be empty')
-        return redirect(url_for('course_name', course=course))
-
     for i in comment.split():
-        print(i, classifier.detect(i))
-        if classifier.detect(i):
-            comment = comment.replace(i, '*'*len(i))
-        elif classifier.detect(''.join(comment.split())):
+        if i in swears:
             comment = comment.replace(i, '*'*len(i))
 
     if not request.form.get('anonymous'):

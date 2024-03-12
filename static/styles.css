@@ -16,7 +16,6 @@
     background-color: #767676;
 }
 
-
 .logo {
     width: 27%;
     height: 90%;
@@ -32,7 +31,6 @@
     align-items: center;
     margin-right: 16.5%;
     gap: 3%;
-
 }
 
 .register {
@@ -56,6 +54,7 @@
 .login {
     margin-bottom: 2.5%;
 }
+
 .login_button {
     background-color: #373737;
     border-radius: 3px;
@@ -73,7 +72,6 @@
 
 .login_button:hover, .register_button:hover {
     background-color:#272727;
-    color: white;
 }
 
 /*#############################################################################################################*/
@@ -88,7 +86,8 @@
 }
 
 .background {
-    background-size: cover;
+    background-size: contain;
+    background-attachment: fixed;
 }
 
 .search-form {
@@ -172,7 +171,6 @@
     align-items: right;
     padding: 20px;
     background-color: #767676;
-
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
 }
@@ -203,7 +201,6 @@
     margin-top: 4%;
 }
 
-
 .dizhak {
     position: relative;
     margin-left: 5%;
@@ -217,6 +214,7 @@
     0% { filter: hue-rotate(0deg); }
     100% { filter: hue-rotate(360deg); }
 }
+
 @keyframes rotate-animation {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -236,3 +234,74 @@
     align-items: start;
 }
 
+@media only screen and (max-width: 768px) {
+
+    .logo {
+        width: 40%;
+        margin-left: 3%;
+        margin-right: 0;
+    }
+
+    .buttons {
+        margin-right: 6%;
+        margin-left: 0;
+        gap: 1%;
+    }
+
+    .register_button,
+    .login_button {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+
+    .main {
+        width: 100%;
+    }
+
+    .search-input {
+        width: 87%;
+        margin-left: 2%;
+    }
+
+    .search-button {
+        font-size: 8px;
+        padding: 6px 8px;
+        margin-right: 4%;
+    }
+
+    .h1 {
+        font-size: 24px;
+        margin-left: 2%;
+    }
+
+    .courses {
+        margin-left: 2%;
+    }
+
+    .course {
+        width: 97%;
+        margin-right: 2%;
+    }
+
+    .footer {
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .about {
+        font-size: 36px;
+        margin-left: 2%;
+    }
+
+    .main p {
+        margin-left: 2%;
+        font-size: 16px;
+        width: 80%;
+    }
+
+    .dizhak {
+        width: 50%;
+        height: 15%;
+    }
+}

@@ -33,13 +33,12 @@
             </div>
             <div class = 'comments-box'>
                 <h2>Коментарі ({{ info[5]|length }})</h2>
-                <p>Зареєстровано як {{ user['email'] }}</p>
+                <p>{% if user['email'] %}Зареєстровано як {{ user['email'] }}{% else %}Не зареєстровано{% endif %}</p>
                 <form action="{{ url_for('add_comment') }}" method="POST" class="comment-form">
                     <div id="comment-form-1">
                         <input type='text' name="comment-input" placeholder="Залиште коментар" required>
                         <button type='submit' class='comment-button' id = 'submit-button'>Опублікувати</button>
                     </div>
-                    <br />
                     <div>
                         <input type="checkbox" id="anonymous" name="anonymous" class = 'anonymous'>
                         <label for="anonymous" class = 'anonymous-checkbox'>Опублікувати анонімно</label>
