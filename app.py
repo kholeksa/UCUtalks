@@ -1,3 +1,13 @@
+'''
+ --- UCUtalks ---
+
+Team:
+ - Khita Oleksa
+ - Dizhak Nazar
+ - Zaklekta Roman
+ - Dovhai Ruslan
+ - Dumai Kateryna'''
+
 from flask import Flask, render_template, request, redirect, url_for, session, flash, abort
 from flask_dance.contrib.google import make_google_blueprint, google
 from flask_dance.consumer import oauth_authorized
@@ -46,12 +56,14 @@ app.register_blueprint(blueprint, url_prefix="/login")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    '''Redirects to Google login page'''
     session.clear()
     if not google.authorized:
         return redirect(url_for("google.login"))
     
 @app.route("/logout", methods=['GET', 'POST'])
 def logout():
+    '''Logs out the user and redirects to the index page'''
     session.clear()
     user = User('Анонімний Користувач', None, None)
     session['user'] = user.to_dict()
@@ -59,6 +71,7 @@ def logout():
 
 @oauth_authorized.connect_via(blueprint)
 def logged_in(blueprint, token):
+    '''Logs the user in and saves his data to the session'''
     resp = blueprint.session.get("/oauth2/v1/userinfo")
     if resp.ok:
         email = resp.json()["email"]
@@ -74,6 +87,7 @@ def logged_in(blueprint, token):
 
 @app.route("/")
 def index():
+    '''Renders the index page'''
     if not User.is_authenticated:
         user = User('Анонімний Користувач', None, None)
         session['user'] = user.to_dict()
@@ -82,26 +96,26 @@ def index():
 
 @app.route("/", methods=["GET", "POST"])
 def search():
-    if request.method == 'POST':
-        search = request.form.get('search').lower()
-        result = [i for i in courses if search in i.lower()]
-        session['result'] = result
-        return redirect(url_for('get_results'))
-    else:
-        return render_template("index.html", courses=result)
+    '''Searches for courses'''
+    search = request.form.get('search').lower()
+    result = [i for i in courses if search in i.lower()]
+    session['result'] = result
+    return redirect(url_for('get_results'))
 
 @app.route("/results", methods=["GET"])
 def get_results():
+    '''Renders the search results page'''
     result = session.get('result', courses)
     return render_template("index.html", courses=result)
 
 @app.route('/about')
 def about():
+    '''Renders the "about" page'''
     return render_template('about.html')
-
 
 @app.route('/course', methods=['GET', 'POST'])
 def course():
+    '''Redirects to the course page with the course name provided in the form'''
     course_name = request.form.get('course')
     if not course_name:
         abort(400, description="No course name provided")
@@ -109,13 +123,13 @@ def course():
 
 @app.route('/course/<course>', methods=['GET'])
 def course_name(course):
+    '''Renders the course page with the course name provided in the URL'''
     info = courses_db.find_one({'name': course})
 
     if info is None:
         abort(404, description="This course doesn't exist")
     
     session['course'] = course
-
     course_info = (info['name'].split('. ')[1], info['teacher'], info['teacher_description'],\
                     info['course'], info['image'], info['comments'][::-1])
 
@@ -123,6 +137,7 @@ def course_name(course):
 
 @app.route('/add_comment', methods=['POST'])
 def add_comment():
+    '''Adds a comment to the course'''
     course = session.get('course')
     comment = request.form.get('comment-input')
 
@@ -130,6 +145,7 @@ def add_comment():
         if i in swears:
             comment = comment.replace(i, '*'*len(i))
 
+    # Add comment to the database
     if not request.form.get('anonymous'):
         courses_db.update_one({'name': course},\
         {'$push': {'comments': [(session['user']['email'], session['user']['name'], comment)]}})
