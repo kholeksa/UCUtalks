@@ -46,6 +46,7 @@ app.register_blueprint(blueprint, url_prefix="/login")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    session.clear()
     if not google.authorized:
         return redirect(url_for("google.login"))
     
