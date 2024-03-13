@@ -32,7 +32,6 @@
     align-items: center;
     margin-right: 16.5%;
     gap: 3%;
-
 }
 
 .register {
@@ -69,9 +68,39 @@
     margin-right: 3%;
 }
 
-.login_button:hover, .register_button:hover {
+.login_button:hover, .register_button:hover, .logout_button:hover {
     background-color:#272727;
+}
+
+.profile {
+    margin-bottom: 2.5%;
+    border-radius: 50%;
+    width: 15%;
+}
+
+.profile:hover {
+    animation: rotate-animation 5s infinite linear, hue-rotate-animation 5s infinite linear;
+}
+
+.logout_button {
+    background-color: #373737;
+    border-radius: 3px;
+    border-width: 0;
+    color: #373737;
     color: white;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 500;
+    padding: 10px 12px;
+    text-align: center;
+    touch-action: manipulation;
+    margin-left: 30%;
+}
+
+.buttons h3 {
+    font-size: 20px;
+    margin-right: 3%;
+    font-family: 'Poppins', sans-serif;
 }
 
 /*#############################################################################################################*/
@@ -195,6 +224,7 @@
     padding: 8px 10px;
     text-align: center;
     touch-action: manipulation; 
+    margin-left: 2%;
 }
 .comment-form button:hover {
     background-color:#272727;
@@ -293,4 +323,14 @@
     .comment p {
         font-size: 12px;
     }
+}
+
+@keyframes hue-rotate-animation {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes rotate-animation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }

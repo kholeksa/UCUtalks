@@ -27,19 +27,15 @@ class User():
     users = {user['email'] for user in users_db.find()}
     is_authenticated = False
 
-    def __init__(self, name, email):
+    def __init__(self, name, email, picture):
         self.name = name
         self.email = email
+        self.picture = picture
 
     def to_dict(self):
         return {
             'name': self.name,
             'email': self.email}
-
-    @classmethod
-    def get(cls, id):
-        return cls.users.get(id)
-    
 
 blueprint = make_google_blueprint(
     client_id="582748017051-d1o8ek940oot1f6akhd3ab06cehnpj3s.apps.googleusercontent.com",
@@ -50,9 +46,15 @@ app.register_blueprint(blueprint, url_prefix="/login")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    session.clear()
     if not google.authorized:
         return redirect(url_for("google.login"))
+    
+@app.route("/logout", methods=['GET', 'POST'])
+def logout():
+    session.clear()
+    user = User('Анонімний Користувач', None, None)
+    session['user'] = user.to_dict()
+    return redirect(url_for("index"))
 
 @oauth_authorized.connect_via(blueprint)
 def logged_in(blueprint, token):
@@ -60,10 +62,11 @@ def logged_in(blueprint, token):
     if resp.ok:
         email = resp.json()["email"]
         name = resp.json()["name"]
-        user = User(name, email)
+        profile_image = resp.json()["picture"]
+        user = User(name, email, profile_image)
         User.is_authenticated = True
         session['user'] = user.to_dict()
-        print(session.get('user'))
+        session['picture'] = profile_image
         if email not in User.users:
             users_db.insert_one({'email': email, 'name': name})
         print('Logged in as', email)
@@ -71,8 +74,9 @@ def logged_in(blueprint, token):
 @app.route("/")
 def index():
     if not User.is_authenticated:
-        user = User('Анонімний Користувач', None)
+        user = User('Анонімний Користувач', None, None)
         session['user'] = user.to_dict()
+    print(session.get('user'))
     return render_template("index.html", courses=courses)
 
 @app.route("/", methods=["GET", "POST"])

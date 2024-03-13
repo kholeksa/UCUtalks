@@ -12,12 +12,20 @@
             <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class='logo'>
         </a>
         <div class ='buttons'>
+            {% if session['user'].get('email') is none %}
             <form action="{{ url_for('login') }}" method="POST" class="login">
                 <button class="login_button" name='login'>Вхід</button>
             </form>
             <form action="{{ url_for('login') }}" method="POST" class="register">
                 <button class="register_button" name='register'>Рєстрація</button>
             </form>
+            {% elif 'user' in session %}
+            <h3>{{ session['user']['name'] }}</h3>
+            <img src="{{ session['picture'] }}" alt="Profile Picture" class = 'profile'>
+            <form action="{{ url_for('logout') }}" method="POST" class="register">
+                <button class="logout_button" name='Logout'>Вихід</button>
+            </form>
+            {% endif %}
         </div>
     </div>
 
