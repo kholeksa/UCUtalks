@@ -15,6 +15,8 @@ from pymongo.mongo_client import MongoClient
 import base64
 import os
 
+##################################    Setup    ##############################################
+
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 app = Flask(__name__)
@@ -24,28 +26,13 @@ client = MongoClient("mongodb+srv://oleksa:oleksa2@uctk.oc9ucj1.mongodb.net/?ret
 
 mydb = client["mydb"]
 courses_db = mydb["course"]
+courses = [course['name'] for course in mydb["course"].find()]
 users_db = mydb["users"]
-courses = [course['name'] for course in courses_db.find()]
-users = [user['email'] for user in users_db.find()]
 
 with open('swears.txt', 'rb') as file:
     encoded_data = file.read()
     swears = base64.b64decode(encoded_data)
     swears = swears.decode('utf-8').split()
-
-class User():
-    users = {user['email'] for user in users_db.find()}
-    is_authenticated = False
-
-    def __init__(self, name, email, picture):
-        self.name = name
-        self.email = email
-        self.picture = picture
-
-    def to_dict(self):
-        return {
-            'name': self.name,
-            'email': self.email}
 
 blueprint = make_google_blueprint(
     client_id="582748017051-d1o8ek940oot1f6akhd3ab06cehnpj3s.apps.googleusercontent.com",
@@ -54,20 +41,41 @@ blueprint = make_google_blueprint(
 
 app.register_blueprint(blueprint, url_prefix="/login")
 
+##############################################################################################
+
+class User():
+    users = {user['email'] for user in mydb["users"].find()}
+
+    def __init__(self, name = 'Анонімний Користувач', email = None, picture = None):
+        self.name = name
+        self.email = email
+        self.picture = picture
+
+    def to_dict(self):
+        return {'name': self.name, 'email': self.email}
+    
+    @staticmethod
+    def anonymous_user():
+        '''Function creates an anonymous user and saves
+          it to the session if the user is not logged in.
+          Created to prevent errors when the user is not logged in
+          '''
+        if not google.authorized:
+            user = User()
+            session['user'] = user.to_dict()
+
+@app.route("/")
+def index():
+    '''Renders the index page'''
+    User.anonymous_user()
+    return render_template("index.html", courses=courses)
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     '''Redirects to Google login page'''
     session.clear()
     if not google.authorized:
         return redirect(url_for("google.login"))
-    
-@app.route("/logout", methods=['GET', 'POST'])
-def logout():
-    '''Logs out the user and redirects to the index page'''
-    session.clear()
-    user = User('Анонімний Користувач', None, None)
-    session['user'] = user.to_dict()
-    return redirect(url_for("index"))
 
 @oauth_authorized.connect_via(blueprint)
 def logged_in(blueprint, token):
@@ -85,32 +93,31 @@ def logged_in(blueprint, token):
             users_db.insert_one({'email': email, 'name': name})
         print('Logged in as', email)
 
-@app.route("/")
-def index():
-    '''Renders the index page'''
-    if not User.is_authenticated:
-        user = User('Анонімний Користувач', None, None)
-        session['user'] = user.to_dict()
-    print(session.get('user'))
-    return render_template("index.html", courses=courses)
+@app.route("/logout", methods=['GET', 'POST'])
+def logout():
+    '''Logs out the user and redirects to the index page'''
+    session.clear()
+    User.anonymous_user()
+    return redirect(url_for("index"))
 
 @app.route("/", methods=["GET", "POST"])
 def search():
     '''Searches for courses'''
     search = request.form.get('search').lower()
-    result = [i for i in courses if search in i.lower()]
-    session['result'] = result
+    session['result'] = [i for i in courses if search in i.lower()]
     return redirect(url_for('get_results'))
 
 @app.route("/results", methods=["GET"])
 def get_results():
     '''Renders the search results page'''
+    User.anonymous_user()
     result = session.get('result', courses)
     return render_template("index.html", courses=result)
 
 @app.route('/about')
 def about():
     '''Renders the "about" page'''
+    User.anonymous_user()
     return render_template('about.html')
 
 @app.route('/course', methods=['GET', 'POST'])
@@ -124,13 +131,14 @@ def course():
 @app.route('/course/<course>', methods=['GET'])
 def course_name(course):
     '''Renders the course page with the course name provided in the URL'''
+    User.anonymous_user()
     info = courses_db.find_one({'name': course})
 
     if info is None:
         abort(404, description="This course doesn't exist")
     
     session['course'] = course
-    course_info = (info['name'].split('. ')[1], info['teacher'], info['teacher_description'],\
+    course_info = ('. '.join(info['name'].split('. ')[1:]), info['teacher'], info['teacher_description'],\
                     info['course'], info['image'], info['comments'][::-1])
 
     return render_template('course.html', info=course_info, user = session.get('user'))
@@ -145,7 +153,6 @@ def add_comment():
         if i in swears:
             comment = comment.replace(i, '*'*len(i))
 
-    # Add comment to the database
     if not request.form.get('anonymous'):
         courses_db.update_one({'name': course},\
         {'$push': {'comments': [(session['user']['email'], session['user']['name'], comment)]}})
