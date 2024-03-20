@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <div class = 'header'>
@@ -31,8 +32,8 @@
 
     <div class = 'background', style = "background-image: url({{url_for('static', filename='ucu.jpg') }});">
         <div class="main">
-            <form class="search-form", action="{{ url_for('search', courses=courses) }}" method="POST">
-                <input type="text" name = 'search' class="search-input" placeholder="Пошук..." required>
+            <form id="search-form" class="search-form" action="{{ url_for('search') }}" method="POST">
+                <input id="search-input" type="text" name='search' class="search-input" placeholder="Пошук..." required>
                 <button type='submit' class='search-button'>Пошук</button>
             </form>
             <h1 class = 'h1'>Курси</h1>
@@ -54,4 +55,22 @@
     </div>
 </body>
 </html>
+
+<script>
+    $(document).ready(function() {
+        $('#search-input').on('input', function() {
+            $.ajax({
+                url: $('#search-form').attr('action'),
+                method: 'POST',
+                data: $('#search-form').serialize(),
+                success: function(data) {
+                    $('.courses').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $('.courses').append('<form action="{{ url_for('course') }}" method="POST"><input type="hidden" name="course" value="' + data[i] + '"><button class="course">' + data[i] + '</button></form>');
+                }
+            }
+        });
+    });
+});
+</script>
 

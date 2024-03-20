@@ -8,7 +8,7 @@ Team:
  - Dovhai Ruslan
  - Dumai Kateryna'''
 
-from flask import Flask, render_template, request, redirect, url_for, session, flash, abort
+from flask import Flask, render_template, request, redirect, url_for, session, abort, jsonify
 from flask_dance.contrib.google import make_google_blueprint, google
 from flask_dance.consumer import oauth_authorized
 from pymongo.mongo_client import MongoClient
@@ -104,8 +104,12 @@ def logout():
 def search():
     '''Searches for courses'''
     search = request.form.get('search').lower()
-    session['result'] = [i for i in courses if search in i.lower()]
-    return redirect(url_for('get_results'))
+    result = [i for i in courses if search in i.lower()]
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        return jsonify(result)
+    else:
+        session['result'] = result
+        return redirect(url_for("get_results")) 
 
 @app.route("/results", methods=["GET"])
 def get_results():
