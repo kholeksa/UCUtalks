@@ -8,6 +8,7 @@ Team:
  - Dovhai Ruslan
  - Dumai Kateryna'''
 
+
 from flask import Flask, render_template, request, redirect, url_for, session, abort, jsonify
 from flask_dance.contrib.google import make_google_blueprint, google
 from flask_dance.consumer import oauth_authorized
@@ -167,4 +168,4 @@ def add_comment():
     return redirect(url_for('course_name', course=course))
 
 if __name__ == "__main__":
-    app.run(debug=True)   
+    app.run(host='0.0.0.0', port=5000)   
