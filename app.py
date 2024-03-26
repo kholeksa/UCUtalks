@@ -152,18 +152,19 @@ def course_name(course):
 def add_comment():
     '''Adds a comment to the course'''
     course = session.get('course')
-    comment = request.form.get('comment-input')
+    comment = request.form.get('comment-input').strip()
 
     for i in comment.split():
         if i in swears:
             comment = comment.replace(i, '*'*len(i))
 
-    if not request.form.get('anonymous'):
-        courses_db.update_one({'name': course},\
-        {'$push': {'comments': [(session['user']['email'], session['user']['name'], comment)]}})
-    else:
-        courses_db.update_one({'name': course},\
-        {'$push': {'comments': [('anonimous@ucu.edu.ua', 'Анонімний користувач', comment)]}})
+    if comment:
+        if not request.form.get('anonymous'):
+            courses_db.update_one({'name': course},\
+            {'$push': {'comments': [(session['user']['email'], session['user']['name'], comment)]}})
+        else:
+            courses_db.update_one({'name': course},\
+            {'$push': {'comments': [('None', 'Анонімний користувач', comment)]}})
 
     return redirect(url_for('course_name', course=course))
 
