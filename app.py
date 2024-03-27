@@ -13,6 +13,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, a
 from flask_dance.contrib.google import make_google_blueprint, google
 from flask_dance.consumer import oauth_authorized
 from pymongo.mongo_client import MongoClient
+from flask_talisman import Talisman
 import base64
 import os
 
@@ -21,6 +22,7 @@ import os
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 app = Flask(__name__)
+talisman = Talisman(app)
 app.secret_key = '123'
 
 client = MongoClient("mongodb+srv://oleksa:oleksa2@uctk.oc9ucj1.mongodb.net/?retryWrites=true&w=majority&appName=Uctk")
