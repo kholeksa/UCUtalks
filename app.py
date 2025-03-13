@@ -1,14 +1,3 @@
-'''
- --- UCUtalks ---
-
-Team:
- - Khita Oleksa
- - Dizhak Nazar
- - Zaklekta Roman
- - Dovhai Ruslan
- - Dumai Kateryna'''
-
-
 from flask import Flask, render_template, request, redirect, url_for, session, abort, jsonify
 from flask_dance.contrib.google import make_google_blueprint, google
 from flask_dance.consumer import oauth_authorized
@@ -23,7 +12,7 @@ os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 app = Flask(__name__)
 app.secret_key = '123'
 
-client = MongoClient("mongodb+srv://oleksa:oleksa2@uctk.oc9ucj1.mongodb.net/?retryWrites=true&w=majority&appName=Uctk")
+client = MongoClient("...")
 
 mydb = client["mydb"]
 courses_db = mydb["course"]
@@ -36,8 +25,8 @@ with open('swears.txt', 'rb') as file:
     swears = swears.decode('utf-8').split()
 
 blueprint = make_google_blueprint(
-    client_id="582748017051-d1o8ek940oot1f6akhd3ab06cehnpj3s.apps.googleusercontent.com",
-    client_secret="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",
+    client_id="...",
+    client_secret="...",
     scope=["openid", "https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/userinfo.profile"])
 
 app.register_blueprint(blueprint, url_prefix="/login")
